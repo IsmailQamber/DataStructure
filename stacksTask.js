@@ -29,6 +29,17 @@ class Stack {
         }
 }
 
+    pop = () => {
+        if(this.isEmpty()){
+            console.log("The deck is empty!");
+        }else {
+            const popped = this.pop;
+            this.top = popped.next;
+            this.length--;
+            return popped.getData();
+        }
+    }
+
 }
 const colors = ["red", "blue", "green", "yellow"];
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -39,26 +50,28 @@ const random = (array) => {
 }
 
 const deck = new Stack();
-const Card = deck.push(random(colors), random(numbers));
-const player1 = [`1. ${Card}`, `2. ${Card}`, `3. ${Card}`, `4. ${Card}`, `5. ${Card}`];
-const player2 = [`1. ${Card}`, `2. ${Card}`, `3. ${Card}`, `4. ${Card}`, `5. ${Card}`];
+// const Card = deck.push(random(colors), random(numbers));
+while(!deck.isFull()) {
+    let color = random(colors);
+    let number = random(numbers);
+    deck.push(color, number);
+}
+const player1 = [];
+const player2 = [];
+
+    for(i = 0; i < 5; i++){
+        player1.push(deck.pop());
+        player2.push(deck.pop());
+    }
+// const player1 = [`1. ${Card}`, `2. ${Card}`, `3. ${Card}`, `4. ${Card}`, `5. ${Card}`];
+// const player2 = [`1. ${Card}`, `2. ${Card}`, `3. ${Card}`, `4. ${Card}`, `5. ${Card}`];
 
 const PrintCards = (playerArray) =>{
     return playerArray.forEach((element) =>  console.log(element));
 }
-Card;//1
-Card;//2
-Card;//3
-Card;//4
-Card;//5
-Card;//6
-Card;//7
-Card;//8
-Card;//9
+PlayerDraw(player1);
+PlayerDraw(player2);
 PrintCards(player1);//player1 has 5 cards
 PrintCards(player2);//player2 has 5 cards as well
 Card;//10
-deck.peek();
-
-
-
+console.log(deck.peek())
