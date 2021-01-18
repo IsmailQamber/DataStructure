@@ -8,7 +8,7 @@ class TreeNode{
 
     addChild = (node) =>{
         if(this.children.length < this.limit){ //making sure that the parent only have two children
-            this.child.push(node);
+            this.children.push(node);
             console.log(`${this.child},is a child of  ${node.name}`)
         }else{
             console.log("You already have two children, isn't that enough ?")
@@ -19,7 +19,7 @@ class TreeNode{
         while(nodes.length > 0){
             let current = nodes.pop();
             console.log(current.name);
-            nodes = [...nodes, ...current.child];
+            nodes = [...nodes, ...current.children];
         }
     }
     
@@ -31,7 +31,7 @@ class TreeNode{
 
 }
 
-const root = new TreeNode(Qamber);
+const root = new TreeNode("Qamber");
 
 let fullName = prompt(`enter child full name:`);
 
@@ -74,9 +74,6 @@ while (fullName !== "done"){
     //      child = prompt("enter child name: ")
     //      root.addChild(child);
     //  }
-
-       
-    }
 
 root.Traverse();
 
