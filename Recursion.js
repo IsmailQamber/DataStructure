@@ -9,7 +9,7 @@ const n = numbers.length;
 const FindSum = (numbers, length) => {
     while(length < 0){
         numbers.forEach((number) => {
-              FindSum(numbers, length) 
+              FindSum(number, length) 
             length--;
         });
     }
